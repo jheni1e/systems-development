@@ -1,33 +1,17 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
+import ProductList from './pages/productList';
+import CreateProduct from './pages/createProduct';
+import EditProduct from './pages/editProduct';
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  const fetchData = async () => {
-    const response = await axios.get("http://localhost:8080/api/product/products")
-    setProducts(response.data)
-  }
-
-  useEffect(() => {
-    fetchData();
-    console.log(products);
-  }, []);
-
   return (
     <>
-      <h1 className="font-bold">Produtos</h1>
-      <br />
-      <ul>
-        {products.map(product => (
-          <li
-            key={product.id}
-            className="font-mono text-xl">
-              {product.name}
-          </li>
-        ))}
-      </ul>
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/cadastro" element={<CreateProduct />} />
+        <Route path="/edicao/:id" element={<EditProduct />} />
+      </Routes>
     </>
   )
 }
