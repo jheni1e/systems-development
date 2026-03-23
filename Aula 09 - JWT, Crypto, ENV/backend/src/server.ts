@@ -7,7 +7,9 @@ const app = express();
 const port = 8080;
 
 app.use(cors({
-    origin: '*'
+    origin: "http://localhost:8080",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 connectDB();
