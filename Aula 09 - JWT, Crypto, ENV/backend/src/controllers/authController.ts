@@ -49,12 +49,12 @@ class AuthController {
                 id: user.id
             },
             secret as string,
-            {
+            { 
                 expiresIn: '2 days'
             }
         );
 
-        return { token: token };
+        return res.status(200).send({ token: token });
     }
 }
 
