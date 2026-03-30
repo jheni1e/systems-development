@@ -16,6 +16,8 @@ function Login() {
       const token = response.data;
 
       setToken(token);
+      sessionStorage.setItem('token', response.data.token);
+
       alert("Usuário fez login!");
       console.log(token);
     } catch (error) {
