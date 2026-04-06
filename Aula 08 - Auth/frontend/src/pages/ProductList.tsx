@@ -27,22 +27,29 @@ function ProductList() {
       <Link to="/cadastro">
         <button>Novo Produto</button>
       </Link>
-      <ul>
-        {products.map((product: any) => (
-          <li key={product._id}>
-            <span>{product.name} - R$ {product.price}</span>
-
-            <div className="actions">
-              <Link to={`/edicao/${product._id}`}>
-                <button>Editar</button>
-              </Link>
-              <button onClick={() => deleteProduct(product._id)}>
-                Deletar
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <table className="min-w-full table-fixed border-collapse mt-6">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product: any) => (
+            <tr key={product._id}>
+              <td>{product.name}</td>
+              <td>R$ {product.price}</td>
+              <td className="actions">
+                <Link to={`/edicao/${product._id}`}>
+                  <button>Editar</button>
+                </Link>
+                <button onClick={() => deleteProduct(product._id)}>Deletar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }

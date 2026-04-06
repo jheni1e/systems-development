@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 body {
   background-color: #f5f5f5;
   font-family: system-ui, sans-serif;
@@ -14,8 +16,11 @@ body {
   background-color: #ffffff;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   margin: 2rem;
+  font-family: 'Arial', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -41,7 +46,7 @@ input {
 
 input:focus {
   border-color: #888;
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
   outline: none;
 }
 
@@ -60,50 +65,44 @@ button:hover {
   background-color: #555555;
 }
 
-ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 0;
-  margin-top: 20px;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background-color: #ffffff;
-  border-radius: 1rem;
-  border: 1px solid #e0e0e0;
-  transition: all 0.2s ease;
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
-li span {
-  font-size: 16px;
-  font-weight: 500;
-  color: #1f1f1f;
-  flex: 1;
+th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  justify-content: center;
   flex-shrink: 0;
 }
 
 .actions button {
   padding: 8px 12px;
-  border-radius: 0;
   font-size: 14px;
   font-weight: 500;
-  background-color: #ebebeb;
-  color: #1f1f1f;
+  background-color: #aaa;
+  color: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .actions button:hover {
-  background-color: #e0e0e0;
+  background-color: #666;
 }
