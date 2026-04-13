@@ -26,29 +26,39 @@ function EditProduct() {
 
   async function updateProduct(e: React.FormEvent) {
     e.preventDefault();
+    const result = await Swal.fire({
+      title: 'Tem certeza de que quer atualizar esse item?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Atualizar',
+      cancelButtonText: 'Cancelar'
+    });
+    if (result.isConfirmed) {
+      try {
+        await axios.put(`http://localhost:8080/api/product/products/${id}`, {
+          name,
+          description,
+          price,
+          stock,
+          category
+        });
 
-    try {
-      await axios.put(`http://localhost:8080/api/product/products/${id}`, {
-        name,
-        description,
-        price,
-        stock,
-        category
-      });
-
-      Swal.fire({
-        title: "Produto atualizado",
-        text: "Produto atualizado com sucesso!",
-        icon: "success"
-      });
-      navigate("/");
-    } catch (error) {
-      console.log(error)
-      Swal.fire({
-        title: "Erro ao criar produto",
-        text: "Erro:" + error,
-        icon: "error"
-      });
+        Swal.fire({
+          title: "Produto atualizado",
+          text: "Produto atualizado com sucesso!",
+          icon: "success"
+        });
+        navigate("/");
+      } catch (error) {
+        console.log(error)
+        Swal.fire({
+          title: "Erro ao criar produto",
+          text: "Erro:" + error,
+          icon: "error"
+        });
+      }
     }
   }
 
