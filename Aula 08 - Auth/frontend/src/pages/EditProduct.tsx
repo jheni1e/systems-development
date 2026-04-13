@@ -26,7 +26,7 @@ function EditProduct() {
 
   async function updateProduct(e: React.FormEvent) {
     e.preventDefault();
-    
+
     try {
       await axios.put(`http://localhost:8080/api/product/products/${id}`, {
         name,
@@ -50,46 +50,46 @@ function EditProduct() {
         icon: "error"
       });
     }
-
-    useEffect(() => {
-      getProduct();
-    }, []);
-
-    return (
-      <div>
-        <h1>Editar Produto</h1>
-        <form onSubmit={updateProduct}>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <input
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
-          />
-
-          <input
-            type="number"
-            value={stock}
-            onChange={(e) => setStock(Number(e.target.value))}
-          />
-
-          <input
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-          <button type="submit">Atualizar</button>
-        </form>
-      </div>
-    )
   }
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  return (
+    <div>
+      <h1>Editar Produto</h1>
+      <form onSubmit={updateProduct}>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <input
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
+        <input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(Number(e.target.value))}
+        />
+
+        <input
+          type="number"
+          value={stock}
+          onChange={(e) => setStock(Number(e.target.value))}
+        />
+
+        <input
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+        <button type="submit">Atualizar</button>
+      </form>
+    </div>
+  )
 }
 
 export default EditProduct

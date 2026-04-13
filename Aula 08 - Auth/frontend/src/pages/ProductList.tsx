@@ -14,21 +14,33 @@ function ProductList() {
   }
 
   async function deleteProduct(id: string) {
-    try {
-      await axios.delete(`http://localhost:8080/api/product/products/${id}`);
-      getProducts();
-      Swal.fire({
-        title: "Produto deletado",
-        text: "Produto deletado com sucesso!",
-        icon: "success"
-      });
-    } catch (error) {
-      console.log(error)
-      Swal.fire({
-        title: "Erro ao criar produto",
-        text: "Erro:" + error,
-        icon: "error"
-      });
+    const result = await Swal.fire({
+      title: 'Tem certeza de que quer deletar esse item?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Deletar',
+      cancelButtonText: 'Cancelar'
+    });
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`http://localhost:8080/api/product/products/${id}`);
+        getProducts();
+
+        Swal.fire({
+          title: "Produto deletado",
+          text: "Produto deletado com sucesso!",
+          icon: "success"
+        });
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          title: "Erro ao deletar produto",
+          text: "Não foi possível excluir o item.",
+          icon: "error"
+        });
+      }
     }
   }
 
