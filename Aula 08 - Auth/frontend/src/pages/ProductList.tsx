@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import './index.css'
+import Swal from "sweetalert2"
 
 function ProductList() {
   const [products, setProducts] = useState([])
@@ -13,8 +14,22 @@ function ProductList() {
   }
 
   async function deleteProduct(id: string) {
-    await axios.delete(`http://localhost:8080/api/product/products/${id}`);
-    getProducts();
+    try {
+      await axios.delete(`http://localhost:8080/api/product/products/${id}`);
+      getProducts();
+      Swal.fire({
+        title: "Produto deletado",
+        text: "Produto deletado com sucesso!",
+        icon: "success"
+      });
+    } catch (error) {
+      console.log(error)
+      Swal.fire({
+        title: "Erro ao criar produto",
+        text: "Erro:" + error,
+        icon: "error"
+      });
+    }
   }
 
   useEffect(() => {

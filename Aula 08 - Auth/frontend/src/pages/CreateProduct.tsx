@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2";
 
 export default function CreateProduct() {
   const navigate = useNavigate();
@@ -26,10 +27,19 @@ export default function CreateProduct() {
         date
       })
 
-      alert("Produto criado!");
+      Swal.fire({
+        title: "Produto criado",
+        text: "Produto criado com sucesso!",
+        icon: "success"
+      });
       navigate("/");
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        title: "Erro ao criar produto",
+        text: "Erro:" + error,
+        icon: "error"
+      });
     }
   }
 
