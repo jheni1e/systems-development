@@ -28,7 +28,6 @@ function EditProduct() {
     e.preventDefault();
     const result = await Swal.fire({
       title: 'Tem certeza de que quer atualizar esse item?',
-      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
