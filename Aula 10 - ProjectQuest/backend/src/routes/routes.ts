@@ -1,9 +1,11 @@
 import { Express } from 'express';
 import express from 'express';
-import product from './productRoutes.ts';
+import project from './projectRoutes.ts';
+import step from './stepRoutes.ts';
 
 export default function (app: Express) {
     app
         .use(express.json())
-        .use('/api/product', product)
+        .use('/api/project', project)
+        .use('/api/step', step)
 }
