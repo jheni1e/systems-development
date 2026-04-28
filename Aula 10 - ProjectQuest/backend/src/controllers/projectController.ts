@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Project from "../models/project.ts";
+import Step from "../models/step.ts";
 
 class ProjectController {
     static async listAll(req: Request, res: Response) {
@@ -50,7 +51,9 @@ class ProjectController {
                 return res.status(404).json({ message: "Projeto não encontrado." });
             }
 
-            return res.status(200).json(project);
+            const steps = await Step.find({ projectId: id }).select("-__v");
+
+            return res.status(200).json({ project, steps });
         } catch (error) {
             res.status(400).json({ message: 'Erro ao buscar projeto.', error });
         }

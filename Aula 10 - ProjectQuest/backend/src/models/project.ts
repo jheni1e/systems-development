@@ -10,7 +10,7 @@ export interface IProject extends Document {
 
 const projectSchema: Schema = new Schema({
     title: { type: String, required: true },
-    xp: { type: Number, required: true, unique: true },
+    xp: { type: Number, required: true },
     level: { type: String, required: true },
     progress: { type: Number, required: true },
     status: { type: String, required: true }
