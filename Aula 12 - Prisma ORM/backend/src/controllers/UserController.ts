@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { registerUserDto } from "../dtos/userDTO";
+import { registerUser } from "../services/user.service";
 
-export class UserController {
-    async register(req: Request, res: Response){
+export default class UserController {
+    static async register(req: Request, res: Response){
         const data: registerUserDto = req.body
         try{
             await registerUser(data)
@@ -11,6 +12,8 @@ export class UserController {
         catch{
             return res.status(500).send({ response: "Erro"})
         }
+    }
+    static async login(req: Request, res: Response) {
 
     }
 }
