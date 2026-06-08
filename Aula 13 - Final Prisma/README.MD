@@ -5,3 +5,5 @@ npm install @prisma/client@6
 npx prisma init
 
 npx prisma migrate dev
+
+npx prisma generate
